@@ -11,15 +11,90 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <selenium.version>4.12.1</selenium.version>
+    <testng.version>7.8.0</testng.version>
+    <extentVersion>5.1.1</extentVersion>
+    <apacheCommonVersion>3.14.0</apacheCommonVersion>
+    <apachePOIVersion>5.2.5</apachePOIVersion>
+    <apchePOIOOXMLVersion>5.2.5</apchePOIOOXMLVersion>
+    <webdrivermanager.version>5.5.3</webdrivermanager.version>
+    <maven.surefire.failsafe.version>3.1.2</maven.surefire.failsafe.version>
+    <maven.compiler.version>3.11.0</maven.compiler.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <dependencies>
+
+    <!-- TestNG Dependency -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- WebDriverManager Dependency -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
+    </dependency>
+
+    <!-- Selenium Dependency -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extentVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${apacheCommonVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>${apachePOIVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${apchePOIOOXMLVersion}</version>
+    </dependency>
   </dependencies>
+
+  <build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.failsafe.version}</version>
+        <configuration>
+          <skipTests>false</skipTests>
+          <skip>false</skip>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <fork>true</fork>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
 </project>
