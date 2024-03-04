@@ -1,0 +1,25 @@
+pipelinf{
+  agent any
+    stages{
+      stage("Buils"){
+        steps{
+          echo "Building successfully.."
+    }
+}
+    stage("Deploy"){
+      steps{
+        echo "Deploying successfully"
+    }
+}
+    stage("Test"){
+      steps{
+        echo "Testing successfully"
+    }
+}
+    stage("Release"){
+      steps{
+        echo "Releasing successfully"
+    }
+   }
+ }
+}
